@@ -1,0 +1,49 @@
+<% layout('layouts/boilerplate') %>
+    <div class="row mb-3">
+        <h1 class="text-center">
+            Изменить данные отеля
+        </h1>
+        <div class="col-md-6 offset-md-3">
+            <form action="/hotels/<%= hotel._id %>?_method=PUT" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="title">Название</label>
+                    <input class="form-control" type="text" id="title" name="hotel[title]" value="<%= hotel.title %>" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="location">Расположение</label>
+                    <input class="form-control" type="text" id="location" name="hotel[location]" value="<%= hotel.location %>" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="price">Цена</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="price-label">руб</span>
+                        <input type="text" class="form-control" id="price" name="hotel[price]" placeholder="0.00" aria-label="Цена" aria-describedby="price-label" value="<%= hotel.price %>" required>
+                      </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Описание</label>
+                    <textarea class="form-control" type="text" id="description" name="hotel[description]" required><%= hotel.description %>
+                    </textarea>
+                </div>
+                <div class="mb-3 custom-file">
+                    <label for="image" class="form-label custom-file-label">Добавить изображения</label>
+                    <input type="file" name="image" multiple class="form-control">
+                </div>
+                <div class="mb-3">
+                    <% hotel.images.forEach((img, i) => { %>
+                        <img class="img-thumbnail" src="<%= img.thumbnail %>" alt="Изображение отеля">
+                        <div class="form-check-inline">
+                            <input type="checkbox" id="image-<%= i %>" name="deleteImages[]" value="<%= img.filename %>">
+                        </div>
+                        <label for="image-<%= i %>">Удалить?</label>
+                    <% }) %>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-info">
+                        Обновить
+                    </button>
+                </div>
+            </form>
+            <a href="/hotels/<%= hotel._id %>">Назад к Отелю</a>
+        </div>
+    </div>

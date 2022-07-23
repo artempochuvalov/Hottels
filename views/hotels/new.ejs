@@ -1,0 +1,39 @@
+<% layout('layouts/boilerplate') %>
+    <div class="row mb-3">
+        <h1 class="text-center">
+            Новый отель
+        </h1>
+        <div class="col-md-6 offset-md-3">
+            <form action="/hotels" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="title">Название</label>
+                    <input class="form-control" type="text" id="title" name="hotel[title]" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="location">Расположение</label>
+                    <input class="form-control" type="text" id="location" name="hotel[location]" required>
+                </div>
+                <div class="mb-3 custom-file">
+                    <label for="image" class="form-label custom-file-label">Выберите фотографии отеля</label>
+                    <input type="file" name="image" multiple class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="price">Цена</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="price-label">руб</span>
+                        <input type="text" class="form-control" id="price" name="hotel[price]" placeholder="0.00" aria-label="Цена" aria-describedby="price-label" required>
+                      </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Описание</label>
+                    <textarea required class="form-control" type="text" id="description" name="hotel[description]"></textarea>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-success">
+                        Добавить отель
+                    </button>
+                </div>
+            </form>
+            <a href="/hotels">Все отели</a>
+        </div>
+    </div>
