@@ -3,6 +3,12 @@
 
 Production версия доступна по ссылке https://hottelz.herokuapp.com/
 
-to start -- npm start
+### to start
+```
+npm start
+```
 
-to seed DB -- node seeds
+### to seed DB
+```
+node seeds
+```
